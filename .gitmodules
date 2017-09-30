@@ -1,0 +1,6 @@
+[submodule "igloo"]
+	path = igloo
+	url = ./tests/igloo
+[submodule "tests/igloo"]
+	path = tests/igloo
+	url = https://github.com/joakimkarlsson/igloo.git

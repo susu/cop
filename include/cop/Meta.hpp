@@ -21,8 +21,7 @@ namespace cop
                 );
             }
 
-            void parse(int argc, char** argv) {
-                std::cout << argc << std::endl;
+            void parse(int argc, const char** argv) {
                 ArgVec args(argv, argv+argc);
                 for (auto&& o : optParser) { o(args); }
                 for (auto&& p : positionalArgParsers) { p(args); }

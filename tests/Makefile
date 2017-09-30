@@ -6,6 +6,7 @@ TESTS=test_runner.o \
       test_argconsumer.o \
       test_meta.o \
       test_option.o \
+      test_flag.o \
 
 
 .cpp.o:

@@ -5,7 +5,7 @@ CXXFLAGS=-std=c++14
 TESTS=test_runner.o \
       test_argconsumer.o \
       test_meta.o \
-      # test_option.o \
+      test_option.o \
 
 
 .cpp.o:

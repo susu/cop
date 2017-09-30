@@ -1,0 +1,3 @@
+*.o
+tests/testrunner
+examples/basic

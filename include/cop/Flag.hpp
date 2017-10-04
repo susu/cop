@@ -22,12 +22,32 @@ namespace cop
             void parse(ArgVec& args) {
                 ArgConsumer consumer(args);
 
-                parseHelper(m_shortOpt, m_longOpt, args,
-                    [this, &consumer](size_t index, auto) {
+                for (size_t i = 0; i < args.size(); ++i) {
+                    if (args[i] == "-" + std::string(1, m_shortOpt) ||
+                        args[i] == "--" + m_longOpt)
+                    {
                         m_defined = true;
-                        consumer.markAsConsumed(index);
+                        consumer.markAsConsumed(i);
+                        break;
                     }
-                );
+                    else if (args[i].size() > 2 && args[i][0] == '-' && args[i][1] != '-') {
+                        // like -ltra
+                        args[i] = parseJointArg(args[i]);
+                        break;
+                    }
+                }
+            }
+
+            std::string parseJointArg(const std::string & arg) {
+                std::string newArgument("-");
+                for (size_t j = 1; j < arg.size(); ++j)
+                {
+                    if (arg[j] == m_shortOpt)
+                        m_defined = true;
+                    else
+                        newArgument.push_back(arg[j]);
+                }
+                return newArgument;
             }
 
             bool m_defined = false;

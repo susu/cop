@@ -1,3 +1,4 @@
 *.o
 tests/testrunner
 examples/basic
+build/

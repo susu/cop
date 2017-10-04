@@ -9,6 +9,7 @@ set(TESTS
     test_option.cpp
     test_flag.cpp
     test_posarg.cpp
+    test_integration.cpp
     )
 
 add_executable(test_runner ${TESTS})

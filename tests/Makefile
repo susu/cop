@@ -7,10 +7,15 @@ TESTS=test_runner.o \
       test_meta.o \
       test_option.o \
       test_flag.o \
+      test_posarg.o \
 
 
 .cpp.o:
 	$(CXX) $(CXXFLAGS) $(INC) -c -o $@ $<
+
+$(OBJECTS) : %.o : %.c
+	$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) -M $< > $@
 
 default: testrunner
 
